@@ -13,13 +13,17 @@ source env/bin/activate
 echo "[INFO]: Installing requirements..."
 pip3 install -r requirements.txt
 
-# add path to systemd service template
-echo "[INFO]: Generating a systemd service..."
-cd ..
-cp yt-local.service.template yt-local.service
-echo "ExecStart=/usr/bin/python3 $path/server.py" >> yt-local.service
+# creating starting script in /usr/bin/
+echo "[INFO]: Creating starting script..."
+echo "#!/bin/bash" > yt-local-start.sh
+echo "cd $path" >> yt-local-start.sh
+echo "source env/bin/activate" >> yt-local-start.sh
+echo "python3 server.py" >> yt-local-start.sh
+sudo chmod +x yt-local-start.sh
+sudo cp yt-local-start.sh /usr/bin/
 
 # install systemd service
+cd ..
 echo "[INFO]: Installing systemd service..."
 sudo cp yt-local.service /etc/systemd/system/
 sudo systemctl enable yt-local.service

@@ -10,3 +10,4 @@ WantedBy=multi-user.target
 Type=simple
 Restart=always
 RestartSec=1
+ExecStart=/usr/bin/yt-local-start.sh
