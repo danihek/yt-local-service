@@ -6,3 +6,4 @@ sudo systemctl disable yt-local.service
 sudo rm /etc/systemd/system/yt-local.service
 sudo systemctl daemon-reload
 sudo rm -rf yt-local
+sudo rm /usr/bin/yt-local-start.sh
