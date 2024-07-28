@@ -1,0 +1,12 @@
+[Unit]
+Description=YT-Local Service
+After=network.target
+StartLimitIntervalSec=0
+
+[Install]
+WantedBy=multi-user.target
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
